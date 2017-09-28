@@ -1,0 +1,16 @@
+<div *ngIf="selectedFile.type==='Audio'" class="panel panel-default">
+  <app-audio-player [file]="selectedFile"></app-audio-player>
+</div>
+  
+<div class="overlay" *ngIf="selectedFile.type==='Video'">
+  <div class="overlay-content">
+    <app-video-player  [file]="selectedFile"></app-video-player>
+  </div>
+</div>
+  
+<div class="overlay" *ngIf="selectedFile.type==='Image'">
+  <div class="overlay-content">
+    <app-picture-viewer [picture]="selectedFile"></app-picture-viewer>
+  </div>
+</div>
+

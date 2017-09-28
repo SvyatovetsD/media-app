@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">Загрузка файла</h2>
+  </div>
+
+  <div class="panel-body">
+    <div *ngIf="progress.percentage===0 || error">
+      <form (ngSubmit)="uploadFile()">
+      <div class="input-group form-group">
+          <input required ngModel name="fileName" #fileName="ngModel" type="text" class="form-control" placeholder="Сохранить как" [(ngModel)]="filename">
+          <span class="input-group-btn">
+            <input #fileInput type="file" value="Upload" (change)="fileChange($event)" style="display: none;" />
+            <button type="button" (click)="fileInput.click()" class="btn btn-secondary">Выбрать файл</button>
+          </span>
+      </div>
+
+      <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary" [disabled]="!fileName.valid || !file">Сохранить</button>
+          <button type="button" (click)="closeForm()" class="btn btn-danger">Отмена</button>
+      </div>
+      </form>
+    </div>
+
+    <div *ngIf="progress.percentage!=0 && progress.percentage!=100">
+    Идет загрузка {{ filename }}
+      <div class="progress" >
+        
+        <div class="progress-bar" [style.width]="progress.percentage + '%'">
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" *ngIf="progress.percentage===100 || error">
+      <p class="text-success" *ngIf="!error">{{ filename }} загружен! <button class="btn btn-link" (click)="closeForm()">OK</button></p>
+      <p class="text-danger" *ngIf="error">Ошибка: {{ error }}</p>
+    </div>
+    
+
+  </div>
+</div>
+

@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    {{ file.filename }}
+  </div>
+
+  <div class="panel-body">
+
+    <div class="img-thumbnail" style="width:210px; height:210px; position:relative; float:left">
+      <img class="img-responsive centered-image" [src]="fullPath">
+    </div>
+
+    <div class="btn-group-vertical">
+        <button class="btn btn-link" (click)="openFile()">
+          <span *ngIf="file.type==='Audio' || file.type==='Video'">Проиграть</span>
+          <span *ngIf="file.type==='Image'">Показать</span>
+        </button>
+        <button class="btn btn-link" (click)="updateFile()">Изменить</button>
+        <button class="btn btn-link" (click)="deleteFile()">Удалить</button>
+    </div>
+</div>
+
+<div class="overlay" *ngIf="updateVisible">
+    <div class="overlay-content">
+      <app-update-file (onFileUpdated)="fileWasUpdated($event)" [selectedFile]="file" (formCloseClicked)="hideUpdater()" ></app-update-file>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+

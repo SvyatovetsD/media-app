@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+body { 
+    padding-top: 70px;
+    background-color: #1E88E5;
+    min-width:1000px;
+ }
+
+.overlay {  
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0, 0.4);
+}
+
+.centered-image{
+    max-width: 200px;
+    max-height: 200px;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.overlay-content {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+}
+
+.audio-player-bottom{
+    position:fixed;
+    bottom:0px;
+    width:100%;
+}
+
+.audio-player-header{
+    position:fixed;
+    bottom:40px;
+    width:100%;
+}

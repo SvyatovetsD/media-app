@@ -1,0 +1,12 @@
+<div class="panel text-right" style="background-color: #2E2F2F">
+  <div class="row" style="margin-left:0px;">
+    <div class="col-xs-10 text-left"><h6 class="text-muted">{{ file.filename }}</h6></div>
+    <div class="col-xs-2 text-right"><button (click)="closeForm()" class="btn btn-link">&times;</button></div>
+  </div>
+    
+  <div class="embed-responsive embed-responsive-16by9">
+    <video   controls="controls" autoplay>
+      <source [src]="videoUrl"> 
+    </video>
+  </div>
+</div>

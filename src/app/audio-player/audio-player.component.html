@@ -1,0 +1,9 @@
+<div class="row" style="margin-left:0px;">
+  <div class="col-xs-10 text-left" style="padding-top:10px;">Играет: <b>{{file.filename}}</b></div>
+  <div class="col-xs-2 text-right"><button (click)="close()" class="btn btn-link">&times;</button></div>
+</div>
+   
+<audio (play)="play" *ngIf="showPlayer" style="width:100%; bottom:0px; padding:0px 5px" id="player"  controls autoplay>
+  <source [src]="path">
+</audio>
+

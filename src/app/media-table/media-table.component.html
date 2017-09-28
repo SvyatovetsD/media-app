@@ -1,0 +1,48 @@
+<div *ngIf="!isServerDown">
+  <app-header (reloadListClicked)="updateList()" (onFindBtnClicked)="setFilter($event)"></app-header>
+
+  <div class="row" style="padding-bottom: 10px;">
+    <div [class.col-md-8]="selectedFile">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-hover" >
+            <thead>
+              <tr>
+                <th *ngFor="let column of columns" role="button" (click)="sortBy(column.key)">
+                  <span *ngIf="queryObj.sortBy === column.key"
+                  class="glyphicon"
+                  [class.glyphicon-chevron-up]="queryObj.isSortAscending"
+                  [class.glyphicon-chevron-down]="!queryObj.isSortAscending"
+                  ></span>
+                  {{column.title}}
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr app-media-table-row role="button" *ngFor="let file of files" [file]="file" (click)="fileSelected(file)"></tr>
+            </tbody>
+          </table>
+
+          <div class="text-center">
+            <app-pagination [total-items]="totalItems" [page-size]="pageSize" [currentPage]="queryObj.Page" (page-changed)="changePage($event)"></app-pagination>
+            
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="fileId">
+        <app-file-viewer [id]="fileId"></app-file-viewer>
+      </div>
+    </div>
+
+    <div class="col-md-4" *ngIf="selectedFile">
+      <app-preview [file]="selectedFile" (onFileDeleted)="fileWasDeleted()"></app-preview>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="isServerDown" class="text-center">
+  Подключение к серверу отсутствует. Попробуйте перезагрузить страницу.
+</div>

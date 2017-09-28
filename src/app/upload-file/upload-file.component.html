@@ -21,7 +21,7 @@
       </form>
     </div>
 
-    <div *ngIf="progress.percentage!=0 && progress.percentage!=100">
+    <div *ngIf="progress.percentage!=0 && progress.percentage!=100 && !error">
     Идет загрузка {{ filename }}
       <div class="progress" >
         
